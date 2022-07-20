@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import classnames from 'classnames'
 
 import './index.css'
 
@@ -6,27 +7,32 @@ const africanCountries = [
   {
     name: 'South Africa',
     population: 51.3,
-    motto: 'diverse people unite'
+    motto: 'diverse people unite',
+    code: 'za'
   },
   {
     name: 'Malawi',
     population: 19.1,
-    motto: 'Unity and Freedom'
+    motto: 'Unity and Freedom',
+    code: 'mw'
   },
   {
     name: 'Namibia',
     population: 2.5,
-    motto: 'Unity, Liberty, Justice'
+    motto: 'Unity, Liberty, Justice',
+    code: 'na'
   },
   {
     name: 'Tanzania',
     population: 59.7,
-    motto: 'Freedom and Unity'
+    motto: 'Freedom and Unity',
+    code: 'tz'
   },
   {
     name: 'Zambia',
     population: 18.3,
-    motto: 'One Zambia, One Nation'
+    motto: 'One Zambia, One Nation',
+    code: 'zm'
   }
 ]
 
@@ -55,25 +61,27 @@ const App = () => {
     <div className='container'>
       <div className='row'>
         <div className='column'>
+          <h1>Five African Countries</h1>          
+          <div className='description'>
+            <span className={classnames('flag-icon', `flag-icon-${activeCountry.code}`)}/>
+            <p><strong>Country:</strong> &nbsp; {activeCountry.name}</p>
+            <p><strong>Population:</strong> &nbsp; {activeCountry.population}m</p>
+            <p><strong>Motto:</strong> &nbsp; {activeCountry.motto}</p>
+          </div> 
           <div className='cta'>
             <button
               className='ui button secondary'
               onClick={prevCountry}
             >
-              previous country
+              Prev Country
             </button>
             <button
               className="ui button primary"
               onClick={nextCountry}
             >
-              next country
+              Next Country
             </button>
-          </div>
-          <div>
-            <p><strong>Country:</strong> &nbsp; {activeCountry.name}</p>
-            <p><strong>Population:</strong> &nbsp; {activeCountry.population}m</p>
-            <p><strong>Motto:</strong> &nbsp; {activeCountry.motto}</p>
-          </div>          
+          </div>         
         </div>
       </div>
     </div>
