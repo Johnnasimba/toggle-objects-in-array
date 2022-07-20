@@ -4,15 +4,25 @@
   display: flex;
   justify-content: center;
 }
+h1{
+  margin-bottom: 32px;
+}
 .column{
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .cta{
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin-bottom: 50px;
 }
-.button{
-  font-size: 22px;
+.description{
+  text-align: left;
+  margin-bottom: 40px;
+}
+.flag-icon{
+  width: 148px !important;
+  height: 111px;
+  margin-bottom:16px;
 }
