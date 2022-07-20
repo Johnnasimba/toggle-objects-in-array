@@ -2,46 +2,78 @@ import React, { useState } from 'react'
 
 import './index.css'
 
-const africanCountries = [
-  {
-    name: 'Malawi',
-    population: 2.5
-  },
+const africanCountries = [ 
   {
     name: 'South Africa',
-    population: 5.1
+    population: 51.3,
+    motto: 'diverse people unite'
+  },
+  {
+    name: 'Malawi',
+    population: 19.1,
+    motto: 'Unity and Freedom'
   },
   {
     name: 'Namibia',
-    population: 3.4
+    population: 2.5,
+    motto: 'Unity, Liberty, Justice'
   },
   {
     name: 'Tanzania',
-    population: 3.9
+    population: 59.7,
+    motto: 'Freedom and Unity'
   },
   {
     name: 'Zambia',
-    population: 2.2
+    population: 18.3,
+    motto: 'One Zambia, One Nation'
   }
 ]
 
 const App = () => {
   const [countryIndex, setCountryIndex] = useState(0)
-  const [ activeCountry, setActiveCountry ] = useState(africanCountries[countryIndex])
 
-  const addIndex = () => {
-    setCountryIndex(countryIndex + 1)
+  const nextCountry = () => {
+    let index = countryIndex
+    index++
+    if (index >= africanCountries.length) {
+      index = 0
+    }
+    setCountryIndex(index)
   }
+  const prevCountry = () => {
+    let index = countryIndex
+    index--
+    if (index < 0) {
+      index = africanCountries.length - 1
+    }
+    setCountryIndex(index)
+  }
+
+  let activeCountry = africanCountries[countryIndex]
   return (
     <div className='container'>
       <div className='row'>
         <div className='column'>
-        <div className='cta'>
-              <button className='ui button secondary'>previous country</button>
-              <button className="ui button primary">next country</button>
-            </div>
-            <p>Country: &nbsp; {activeCountry.name}</p>
-            <p>Population: &nbsp; {activeCountry.population}</p>           
+          <div className='cta'>
+            <button
+              className='ui button secondary'
+              onClick={prevCountry}
+            >
+              previous country
+            </button>
+            <button
+              className="ui button primary"
+              onClick={nextCountry}
+            >
+              next country
+            </button>
+          </div>
+          <div>
+            <p><strong>Country:</strong> &nbsp; {activeCountry.name}</p>
+            <p><strong>Population:</strong> &nbsp; {activeCountry.population}m</p>
+            <p><strong>Motto:</strong> &nbsp; {activeCountry.motto}</p>
+          </div>          
         </div>
       </div>
     </div>
